@@ -36,7 +36,7 @@ const config: GatsbyConfig = {
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/saheelahmed04`,
+            url: `https://twitter.com/saheelahmed4`,
           },
           {
             name: `Github`,
