@@ -1,35 +1,51 @@
 {
   "private": true,
-  "name": "minimal-blog",
-  "description": "Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.",
-  "version": "1.3.16",
-  "author": "LekoArts",
-  "license": "0BSD",
-  "starter-name": "gatsby-starter-minimal-blog",
+  "name": "saheelBreezo.github.io",
+  "description": "Source for saheelBreezo.github.io",
+  "version": "0.0.1",
+  "author": "Saheel Ahmed <saheelahmed2@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
+    "deploy": "yarn clean && yarn build && gh-pages -d public -b main",
+    "deploy-ci": "yarn build && gh-pages -d public -b main -r https://${GH_TOKEN}@github.com/saheelBreezo/saheelBreezo.github.io.git",
     "develop": "gatsby develop",
     "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "test": "echo 'No test script yet'"
   },
-  "dependencies": {
+"dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-brands-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@lekoarts/gatsby-theme-minimal-blog": "^6.2.1",
-    "gatsby": "^5.13.3",
-    "gatsby-plugin-feed": "^5.13.1",
-    "gatsby-plugin-manifest": "^5.13.1",
-    "gatsby-plugin-sitemap": "^6.13.1",
-    "gatsby-plugin-webpack-statoscope": "^1.0.3",
+    "@matejmazur/react-katex": "^3.0.2",
+    "gatsby": "^5.12.3",
+    "gatsby-plugin-feed": "^5.12.0",
+    "gatsby-plugin-manifest": "^5.12.0",
+    "gatsby-plugin-offline": "^6.12.0",
+    "gatsby-plugin-sitemap": "^6.12.0",
+    "gatsby-plugin-theme-ui": "^0.16.1",
+    "gatsby-remark-autolink-headers": "^6.12.0",
+    "gatsby-remark-responsive-iframe": "^6.12.0",
+    "gatsby-transformer-remark": "^6.12.0",
+    "katex": "^0.16.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-map-gl": "^5.2.2",
+    "theme-ui": "^0.16.1"
   },
   "devDependencies": {
-    "@types/node": "^18.19.13",
-    "@types/react": "^18.2.51",
-    "@types/react-dom": "^18.2.18",
-    "cross-env": "^7.0.3",
-    "typescript": "^5.3.3"
+    "@types/node": "^20.6.1",
+    "cross-env": "^5.2.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
+    "gh-pages": "^3.1.0"
+  },
+  "volta": {
+    "node": "20.6.1"
   }
 }
