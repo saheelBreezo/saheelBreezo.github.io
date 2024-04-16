@@ -40,7 +40,7 @@ const config: GatsbyConfig = {
           },
           {
             name: `Github`,
-            url: `https://github/saheelBreezo`,
+            url: `https://github.com/saheelBreezo`,
           },
         ],
       },
