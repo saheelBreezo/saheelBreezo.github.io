@@ -16,3 +16,16 @@
 This is the Github repository for my website, [saheelBreezo.github.io](https://saheelBreezo.github.io).
 
 Inspired from [gatsby-starter-minimal-blog](https://github.com/LekoArts/gatsby-starter-minimal-blog) starter using  @lekoarts/gatsby-theme-minimal-blog Gatsby theme.
+
+## ✨ Features
+
+- MDX
+- Fully customizable through the usage of Gatsby Themes (and Theme UI)
+- Light Mode / Dark Mode
+- Typography driven, minimal style
+- Tags/Categories support
+- Code highlighting with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer). Also allows adding line numbers, line highlighting, language tabs, and file titles.
+- RSS Feed for blog posts
+- SEO (Sitemap, OpenGraph tags, Twitter tags)
+- WebApp Manifest
+
