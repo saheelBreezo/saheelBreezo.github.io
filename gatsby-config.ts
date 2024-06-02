@@ -50,6 +50,10 @@ const config: GatsbyConfig = {
             name: `Github`,
             url: `https://github.com/saheelBreezo`,
           },
+          {
+            name: `LinkedIn`,
+            url: `https://linkedin.com/in/saheelahmed/`,
+          },
         ],
       },
     },
