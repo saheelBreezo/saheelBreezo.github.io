@@ -29,6 +29,14 @@ const config: GatsbyConfig = {
             slug: `/blog`,
           },
           {
+            title: `Projects`,
+            slug: `/projects`,
+          },
+          {
+            title: `Talks`,
+            slug: `/talks`,
+          },
+          {
             title: `About`,
             slug: `/about`,
           },
@@ -49,6 +57,12 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-responsive-iframe`],
       },
     },
     {
