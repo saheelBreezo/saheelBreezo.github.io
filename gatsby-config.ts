@@ -29,6 +29,14 @@ const config: GatsbyConfig = {
             slug: `/blog`,
           },
           {
+            title: `Projects`,
+            slug: `/projects`,
+          },
+          {
+            title: `Talks`,
+            slug: `/talks`,
+          },
+          {
             title: `About`,
             slug: `/about`,
           },
@@ -42,6 +50,10 @@ const config: GatsbyConfig = {
             name: `Github`,
             url: `https://github.com/saheelBreezo`,
           },
+          {
+            name: `LinkedIn`,
+            url: `https://linkedin.com/in/saheelahmed/`,
+          },
         ],
       },
     },
@@ -49,6 +61,12 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-responsive-iframe`],
       },
     },
     {
