@@ -7,44 +7,49 @@ import GithubLink from "../../../src/components/GithubLink";
 
 I love to explore and tinker with new things that involves data. I am passionate about data science & machine learning. Please find my projects at [Github](https://github.com/saheelBreezo).
 
-### 🍃  Spatial Air Quality
 
-An air quality map (PM 2.5 concentration) at a 1 km² spatial resolution on daily basis for pan India. Featured in the [IEA
-annual outlook for 2021](https://www.iea.org/reports/india-energy-outlook-2021). Attained an impressive R2 score of 0.85 and a MAE of 18 ugm-3.
+### A Concept Bottleneck Approach for Mapping Urban Deprivation using Morphometrics from Earth Observation
 
-### 🔥 GHG Emissions from fires
+- The research addressed a key limitation of conventional deep learning approaches: while they can identify deprived urban areas, they often provide limited insight into why an area is classified as deprived. I developed a two-stage Concept Bottleneck Model that first uses Sentinel-2 satellite imagery to predict interpretable urban morphometric concepts, such as building density and built-up coverage, before using these concepts to classify areas as Non-Built-up, Non-Deprived Urban, or Deprived Urban.
+- The framework was evaluated across eight cities in Latin America, Africa, and Asia using two complementary urban representations: tessellation-based morphometrics and a newly proposed multiscale representation. SHAP analysis was used to investigate which urban concepts contributed most to model predictions.
+- The results demonstrate how Earth Observation and deep learning can be combined with interpretable urban concepts to provide a more transparent and scalable approach to assessing the physical manifestations of urban deprivation.
 
-Developed a hybrid model that combines machine learning and empirical methods to estimate daily CO2, CH4, and N2O emissions using NASA FIRMS Fires data and MODIS MAIAC & Sentinel 5p aerosol and Copernicus land cover data.Integrated into the prestegious global [Climate Trace](https://climatetrace.org/) coalition, led by former US Vice President Al Gore, and openly available
-as an open-source resource on [GitHub](https://github.com/Blueskyanalytics/ghg-emissions/) under CC by 4.
+### Time-Series Earth Observation for Agricultural Activity Detection
 
-### 🔥 Fire Predictions
+- Conducted research on detecting agricultural management activities—including ploughing, harrowing, sowing, and harvesting—using time-series Sentinel-1 and Sentinel-2 data to support farmer incentive schemes in Denmark.
+- Developed an LSTM-based temporal classification model, achieving an F1-score of 0.85 for single-activity detection and 0.65 for multi-class classification.
+- Investigated the complementary value of SAR and optical time-series for identifying field operations across different crop growth stages.
+- Presented research findings and model performance to clients and project stakeholders, supporting the adoption of Earth observation solutions for agricultural monitoring.
 
+### SEN12-FusionNet: Multi-Modal SAR–Optical Data Fusion for Deforestation Detection
 
-Developed a time series model using LSTM to predict fire counts based on historical fire incidents, available vegetation, and its type and weather conditions.
+- Conducted research on multi-modal Earth observation data fusion for deforestation detection in the Amazon rainforest, investigating whether combining Sentinel-1 SAR with cloudy Sentinel-2 optical imagery improves mapping performance under persistent cloud cover.
+- Developed and evaluated deep learning models based on Early Fusion and Late Fusion strategies to compare how multi-sensor information is integrated for land cover change detection.
+- Assessed the impact of fusion strategies on model generalization and robustness, providing insights into the complementary roles of SAR backscatter and optical imagery for operational deforestation monitoring.
 
-### 💧 Surface area estimation for water bodies. 
+### Urban Heat Island Assessment Using Satellite Remote Sensing
 
-Developed a daily model for extracting surface water extent from Sentinel 2 optical imagery.
+- Conducted a research study to investigate the impact of urbanization—including population growth, infrastructure expansion, and vegetation loss—on Land Surface Temperature (LST) and the Urban Heat Island (UHI) effect.
+- Analyzed the spatial distribution and intensity of the Surface Urban Heat Island (SUHI) across Delhi, India, using satellite-derived land surface temperature and land cover datasets.
+- Examined the relationship between urban morphology, vegetation cover, and thermal patterns to identify key drivers of urban heat and support climate-resilient urban planning.
 
-### 💧 Surface water quality estimation 
+### Satellite-Based Greenhouse Gas Emissions Estimation from Forest and Agricultural Fires
 
-Developed a model to estimate water quality such as chlorophyl_a, ph, cdom, organic carbon using optical satellite imagery.
+- Developed a hybrid modeling framework combining machine learning and empirical approaches to estimate daily CO₂, CH₄, and N₂O emissions from forest and agricultural fires using multi-source Earth observation data.
+- Integrated NASA FIRMS active fire detections with MODIS MAIAC, Sentinel-5P aerosol products, and Copernicus Land Cover data to generate high-resolution global emissions estimates.
+- Contributed to the Climate TRACE coalition, an independent global initiative co-founded by former U.S. Vice President Al Gore.
+- Released the dataset as an open-source resource under the CC BY 4.0 license, enabling reproducible research and public access.
+- Presented the research and methodology at the FOSS4G 2022 conference.
 
-### 🏙 Surface Deformation due to ground water depletion
+### Deep Learning for Landfill Monitoring Using Satellite Imagery
 
-Explored the capabilities of InSAR technology for the detection of land subsidence induced by unauthorized groundwater
-extraction. Produced detailed subsidence maps utilizing resources from ESA Copernicus SNAP and NASA ASF, ensuring
-validation against on-ground well data.
+- Developed a U-Net-based semantic segmentation model to automatically detect and delineate landfill sites froms Sentinel 2 satellite imagery.
+- Curated and processed a multi-temporal satellite imagery dataset spanning 2021, covering major landfill sites across 7+ countries to support model development and evaluation.
 
-### 🍂 Global Landfill Monitoring
+### Satellite-Based Air Quality Monitoring and Active Fire Analysis Across India
 
-Developed a neural net based on UNET to segment landfill sites from satellite imagery, the dataset contains temporal data from 2021 of the major landfill sites from more than 7 countries.
+- Conducted research on air pollution across India, investigating the influence of agricultural residue burning and other fire events using satellite remote sensing and geospatial analytics.
+- Developed and deployed the Breezo Spatial Air Quality Map, producing daily air quality estimates at 1 km² spatial resolution. The dataset was featured in the 2021 [International Energy Agency](https://www.iea.org/reports/india-energy-outlook-2021) (IEA) Annual Outlook.
+- Analyzed 20 years of NASA FIRMS active fire observations, applying clustering techniques and exploratory data analysis to identify spatial and temporal patterns in agricultural and forest fires.
+- Presented the research at international scientific forums, including the Earth System Data Exploration Talk at the Jülich Supercomputing Centre (Germany) and the ECMWF–UEF 2022, demonstrating the application of satellite remote sensing for air quality monitoring across India.
 
-### 🌇 Urban Heat Island Effect
-
-Research study to understand the consequences of urbanisation (rising population density, infra, lack of vegetation) on land surface temperature.
-
-### 🌐 Geospatial Services
-
-An ETL pipeline based on AWS serverless architecture containg geospatial data processing functions. Managed the daily processing of 1 TB of geospatial data, encompassing optical, SAR, and weather data while supporting
-20+ geospatial functions.
