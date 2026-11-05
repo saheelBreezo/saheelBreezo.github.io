@@ -16,38 +16,186 @@ const {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
     <meta name="description" content={description} />
 
     <title>{title} | Saheel Ahmed</title>
+
+    <!-- Initialize theme before rendering to prevent flashing -->
+    <script is:inline>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("theme");
+
+          if (savedTheme === "light" || savedTheme === "dark") {
+            document.documentElement.dataset.theme = savedTheme;
+          }
+        } catch {
+          // Fall back to system preference.
+        }
+      })();
+    </script>
   </head>
 
   <body>
+    <!-- Header -->
     <header class="site-header">
       <div class="container header-inner">
-        <a class="logo" href="/">Saheel Ahmed</a>
 
-        <nav aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/about/">About</a>
-          <a href="/projects/">Projects</a>
-        {/* <a href="/research/">Research</a> */}
-          <a href="/writing/">Posts</a>
-          <a href="/talks/">Talks</a>
-          
-        </nav>
+        <a class="logo" href="/">
+          Saheel Ahmed
+        </a>
+
+        <div class="header-actions">
+
+          <!-- Navigation -->
+          <nav aria-label="Main navigation">
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/projects/">Projects</a>
+
+            {/* Research temporarily disabled */}
+            {/* <a href="/research/">Research</a> */}
+
+            <a href="/writing/">Posts</a>
+            <a href="/talks/">Talks</a>
+          </nav>
+
+          <!-- Theme toggle -->
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle color theme"
+            title="Toggle color theme"
+          >
+
+            <!-- Sun icon -->
+            <svg
+              class="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+
+              <path
+                d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+              />
+            </svg>
+
+            <!-- Moon icon -->
+            <svg
+              class="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M20.985 12.486A9 9 0 0 1 11.514 3.015 9 9 0 1 0 20.985 12.486Z"
+              />
+            </svg>
+
+          </button>
+        </div>
       </div>
     </header>
 
+    <!-- Main content -->
     <main class="container">
       <slot />
     </main>
 
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="container">
         <p>© {new Date().getFullYear()} Saheel Ahmed</p>
       </div>
     </footer>
+
+    <!-- Theme switching logic -->
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>(
+        "#theme-toggle"
+      );
+
+      const systemTheme = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      );
+
+      function getCurrentTheme(): "light" | "dark" {
+        const explicitTheme = document.documentElement.dataset.theme;
+
+        if (explicitTheme === "light" || explicitTheme === "dark") {
+          return explicitTheme;
+        }
+
+        return systemTheme.matches ? "dark" : "light";
+      }
+
+      function updateToggle() {
+        if (!toggle) return;
+
+        const currentTheme = getCurrentTheme();
+
+        const nextTheme =
+          currentTheme === "dark" ? "light" : "dark";
+
+        toggle.setAttribute(
+          "aria-label",
+          `Switch to ${nextTheme} mode`
+        );
+
+        toggle.setAttribute(
+          "title",
+          `Switch to ${nextTheme} mode`
+        );
+      }
+
+      function setTheme(theme: "light" | "dark") {
+        document.documentElement.dataset.theme = theme;
+
+        try {
+          localStorage.setItem("theme", theme);
+        } catch {
+          // Theme still changes during the current visit.
+        }
+
+        updateToggle();
+      }
+
+      toggle?.addEventListener("click", () => {
+        const currentTheme = getCurrentTheme();
+
+        setTheme(
+          currentTheme === "dark" ? "light" : "dark"
+        );
+      });
+
+      // Update the button if the system theme changes.
+      systemTheme.addEventListener("change", updateToggle);
+
+      updateToggle();
+    </script>
+
   </body>
 </html>

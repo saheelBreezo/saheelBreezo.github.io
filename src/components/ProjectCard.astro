@@ -115,7 +115,7 @@ const { project } = Astro.props;
 
   .project-image {
     aspect-ratio: 16 / 9;
-    background: #f3f4f5;
+    background: var(--surface);
   }
 
   .project-image img {
@@ -177,7 +177,9 @@ const { project } = Astro.props;
 
   .tag {
     padding: 0.25rem 0.6rem;
-    background: #f3f4f5;
+    background: var(--tag-background);
+    color: var(--tag-foreground);
+    border: 1px solid var(--tag-border);
     border-radius: 3px;
     font-size: 0.7rem;
   }
