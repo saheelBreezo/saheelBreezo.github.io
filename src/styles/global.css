@@ -5,17 +5,82 @@
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
 
+/* --------------------------------------------------
+   Theme variables
+-------------------------------------------------- */
+
 :root {
+  color-scheme: light;
+
+  /* Base colors */
   --background: #ffffff;
   --foreground: #202020;
   --muted: #666666;
   --border: #e5e5e5;
 
+  /* Surfaces */
+  --surface: #f3f4f5;
+  --surface-border: #e5e7eb;
+
+  /* Technology badges */
+  --tag-background: var(--surface);
+  --tag-foreground: #555555;
+  --tag-border: var(--surface-border);
+
+  /* Code */
+  --code-background: var(--surface);
+  --code-foreground: #303030;
+  --code-border: var(--surface-border);
+
+  /* Typography */
   --font-body: "Inter", sans-serif;
   --font-heading: "Crimson Pro", serif;
 
+  /* Layout */
   --max-width: 1100px;
 }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Base colors */
+  --background: #161616;
+  --foreground: #eaeaea;
+  --muted: #aaaaaa;
+  --border: #383838;
+
+  /* Surfaces */
+  --surface: #262626;
+  --surface-border: #404040;
+
+  /* Technology badges */
+  --tag-foreground: #d4d4d4;
+
+  /* Code */
+  --code-foreground: #e5e5e5;
+}
+
+/* System dark mode when no manual preference exists */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    --background: #161616;
+    --foreground: #eaeaea;
+    --muted: #aaaaaa;
+    --border: #383838;
+
+    --surface: #262626;
+    --surface-border: #404040;
+
+    --tag-foreground: #d4d4d4;
+    --code-foreground: #e5e5e5;
+  }
+}
+
+/* --------------------------------------------------
+   Reset and global styles
+-------------------------------------------------- */
 
 * {
   box-sizing: border-box;
@@ -23,13 +88,25 @@
 
 body {
   margin: 0;
+
   background: var(--background);
   color: var(--foreground);
+
   font-family: var(--font-body);
   line-height: 1.7;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-h1, h2, h3 {
+/* --------------------------------------------------
+   Typography
+-------------------------------------------------- */
+
+h1,
+h2,
+h3 {
   font-family: var(--font-heading);
   font-weight: 600;
   line-height: 1.2;
@@ -43,6 +120,10 @@ h2 {
   font-size: 2rem;
 }
 
+/* --------------------------------------------------
+   Links
+-------------------------------------------------- */
+
 a {
   color: inherit;
   text-decoration: none;
@@ -52,10 +133,22 @@ a:hover {
   text-decoration: underline;
 }
 
+/* --------------------------------------------------
+   Layout
+-------------------------------------------------- */
+
 .container {
   width: min(90%, var(--max-width));
   margin-inline: auto;
 }
+
+main {
+  min-height: 70vh;
+}
+
+/* --------------------------------------------------
+   Header
+-------------------------------------------------- */
 
 .site-header {
   border-bottom: 1px solid var(--border);
@@ -66,6 +159,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+
   gap: 1rem;
   padding-block: 1.5rem;
 }
@@ -76,8 +170,19 @@ a:hover {
   font-weight: 600;
 }
 
+/* --------------------------------------------------
+   Navigation
+-------------------------------------------------- */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 nav {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
 }
@@ -86,13 +191,121 @@ nav a {
   font-size: 0.9rem;
 }
 
-main {
-  min-height: 70vh;
+/* --------------------------------------------------
+   Theme toggle
+-------------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border: 1px solid transparent;
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--foreground);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
+
+.theme-toggle:hover {
+  background: var(--border);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
+}
+
+/* Light theme: display moon */
+
+.icon-sun {
+  display: none;
+}
+
+.icon-moon {
+  display: block;
+}
+
+/* Dark theme: display sun */
+
+:root[data-theme="dark"] .icon-sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .icon-moon {
+  display: none;
+}
+
+/* Follow system preference when no explicit theme exists */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .icon-sun {
+    display: block;
+  }
+
+  :root:not([data-theme]) .icon-moon {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
 
 .site-footer {
   margin-top: 5rem;
   padding-block: 2rem;
+
   border-top: 1px solid var(--border);
   color: var(--muted);
+}
+
+/* --------------------------------------------------
+   Responsive
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .header-inner {
+    gap: 1rem;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  .theme-toggle {
+    flex-shrink: 0;
+  }
+}
+
+/* --------------------------------------------------
+   Reduced motion
+-------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .theme-toggle {
+    transition: none;
+  }
 }
