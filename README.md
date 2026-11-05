@@ -1,43 +1,120 @@
-# Astro Starter Kit: Minimal
+# Personal Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Personal website and portfolio of **Saheel Ahmed**, a Geospatial Data Scientist and Engineer working at the intersection of Earth observation, geospatial engineering, and machine learning.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **Website:** [saheelBreezo.github.io](https://saheelBreezo.github.io)
 
-## 🚀 Project Structure
+## About
 
-Inside of your Astro project, you'll see the following folders and files:
+This website serves as a space to share my professional background, research projects, technical work, writing, and talks.
+
+My work focuses on applying satellite Earth observation, machine learning, and geospatial technologies to environmental monitoring and real-world challenges.
+
+## Built With
+
+- [Astro](https://astro.build/) — Static site framework
+- [MDX](https://mdxjs.com/) — Markdown and components for writing
+- [TypeScript](https://www.typescriptlang.org/) — Structured project data
+- CSS — Custom responsive styling
+- [Fontsource](https://fontsource.org/) — Self-hosted Crimson Pro and Inter fonts
+- [GitHub Pages](https://pages.github.com/) — Website hosting
+- GitHub Actions — Automated build and deployment
+
+## Project Structure
 
 ```text
 /
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 ├── public/
+│   └── images/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/
+│   │   ├── ProjectCard.astro
+│   │   └── TalkEntry.astro
+│   ├── content/
+│   │   └── writing/
+│   ├── data/
+│   │   ├── projects.ts
+│   │   └── talks.ts
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── about.astro
+│   │   ├── projects/
+│   │   ├── writing/
+│   │   └── talks.astro
+│   ├── styles/
+│   │   └── global.css
+│   └── content.config.ts
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Getting Started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Prerequisites
 
-Any static assets, like images, can be placed in the `public/` directory.
+- Node.js
+- npm
 
-## 🧞 Commands
+### Installation
 
-All commands are run from the root of the project, from a terminal:
+Clone the repository:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+git clone https://github.com/saheelBreezo/saheelBreezo.github.io.git
+cd saheelBreezo.github.io
+```
 
-## 👀 Want to learn more?
+Install dependencies:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:4321` in your browser.
+
+## Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Generate the production website in `dist/` |
+| `npm run preview` | Preview the production build locally |
+
+## Deployment
+
+The website is hosted on **GitHub Pages** and deployed automatically using **GitHub Actions**.
+
+Every push to the `main` branch triggers a workflow that:
+
+1. Checks out the repository.
+2. Installs dependencies and builds the Astro website.
+3. Deploys the generated static files to GitHub Pages.
+
+The deployment configuration is available in `.github/workflows/deploy.yml`.
+
+## Acknowledgments
+
+My original personal website was built using [Gatsby Starter Minimal Blog](https://github.com/LekoArts/gatsby-starter-minimal-blog), created by **Lennart Jörgens (LekoArts)**. The starter provided a foundation for my earlier website and introduced me to a minimalist approach to presenting writing and projects. This website has since been rebuilt using Astro, with a new structure, components, and styling tailored to my portfolio. Thanks to **LekoArts** for making the original Gatsby starter publicly available, and to the **Astro community** for developing the framework used in the current version.
+
+## Contact
+
+- **Website:** [saheelBreezo.github.io](https://saheelBreezo.github.io)
+- **GitHub:** [@saheelBreezo](https://github.com/saheelBreezo)
+- **LinkedIn:** [Saheel Ahmed](https://www.linkedin.com/in/saheelahmed/)
+- **Email:** [saheelahmed2@gmail.com](mailto:saheelahmed2@gmail.com)
+
+---
+
+Built with Astro.
