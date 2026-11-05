@@ -1,8 +1,70 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import TalkEntry from "../components/TalkEntry.astro";
+
+import { talks } from "../data/talks";
+
+const sortedTalks = [...talks].sort(
+  (a, b) => b.year - a.year
+);
 ---
 
-<BaseLayout title="Talks">
-  <h1>Talks</h1>
-  <p>Content coming soon.</p>
+<BaseLayout
+  title="Talks & Presentations"
+  description="Conference talks, research presentations, and technical discussions by Saheel Ahmed."
+>
+  <section class="talks-page">
+
+    <header class="page-header">
+      <h1>Talks & Presentations</h1>
+
+      <p>
+        Selected conference presentations, research talks,
+        and technical discussions on Earth observation,
+        geospatial analytics, and machine learning.
+      </p>
+    </header>
+
+    <div class="talks-list">
+      {
+        sortedTalks.map((talk) => (
+          <TalkEntry talk={talk} />
+        ))
+      }
+    </div>
+
+  </section>
 </BaseLayout>
+
+<style>
+  .talks-page {
+    max-width: 950px;
+    padding: 4rem 0 6rem;
+  }
+
+  .page-header {
+    max-width: 750px;
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    margin: 0 0 1.25rem;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+  }
+
+  .page-header p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .talks-list {
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .talks-page {
+      padding: 3rem 0;
+    }
+  }
+</style>

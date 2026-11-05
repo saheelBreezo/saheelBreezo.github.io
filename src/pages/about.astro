@@ -1,8 +1,512 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const experience = [
+  {
+    period: "Nov 2025 – Feb 2026",
+    company: "Terramira (Prev. NEO)",
+    location: "Amersfoort, Netherlands",
+    roles: [
+      {
+        title: "Research Intern",
+      },
+    ],
+    description:
+      "As part of my MSc at the University of Twente, I joined NEO BV in the Netherlands for a three-month research internship. I worked on detecting agricultural field activities, including ploughing, harrowing, sowing, and harvesting, using Sentinel-1 SAR and Sentinel-2 optical time series.\n\nDuring the internship, I explored deep learning approaches to identify when these activities occurred, using LSTM-based models and satellite observations. The research contributed to agricultural monitoring applications relevant to the EU Common Agricultural Policy (CAP).",
+  },
+  {
+    period: "2019–2024",
+    company: "Blue Sky Analytics",
+    location: "Gurugram, India",
+    roles: [{ title: "Data Scientist → Data Lead" }],
+    description:
+      "I joined Blue Sky Analytics as a Data Science Intern and its fourth employee, when it was still a young climate-tech startup. My initial responsibility was to investigate India's air pollution crisis using satellite observations and geospatial data.\n\nAs the company grew, so did my responsibilities. I worked across nearly every aspect of the data lifecycle, from research and data acquisition to developing machine learning models, building processing pipelines, and deploying them into production.\n\nOver the years, I contributed to projects spanning satellite-based air quality monitoring, greenhouse gas emissions from agricultural and forest fires through Climate TRACE, renewable energy asset monitoring, particularly solar parks, and above-ground biomass and carbon stock estimation.\n\nBeyond modelling, I designed and built cloud-native data processing workflows, machine learning inference pipelines, and monitoring systems from the ground up using AWS. I was eventually promoted to Data Lead, where I had the opportunity to lead a small team of talented data scientists.",
+  },
+  {
+    period: "Oct 2018 – Dec 2018",
+    company: "Atlan (Prev. SocialCops)",
+    location: "New Delhi, India",
+    roles: [
+      {
+        title: "Research Intern",
+      },
+    ],
+    description:
+      "I joined SocialCops for a three-month research internship, where I used Python to integrate administrative boundary data from multiple government sources into a standardized geospatial database connecting villages, sub-districts, districts, and states.",
+  }
+];
+
+const education = [
+  {
+    period: "2024–2026",
+    institution: "ITC, University of Twente",
+    degree: "MSc Geoinformation Science & Earth Observation",
+    location: "Enschede, Netherlands",
+    details:
+      "ITC Faculty · Specialization in Geoinformatics",
+    recognition: "ITC Excellence Scholarship",
+  },
+  {
+    period: "2015–2019",
+    institution: "G.G.S. Indraprastha University",
+    degree: "B.Tech Computer Science & Engineering",
+    location: "New Delhi, India",
+  },
+];
+
+const expertise = [
+  {
+    category: "Earth Observation",
+    skills:
+      "Sentinel-1, Sentinel-2, MODIS, Sentinel-5P, InSAR, SAR, Google Earth Engine",
+  },
+  {
+    category: "Machine Learning & GeoAI",
+    skills:
+      "PyTorch, TensorFlow, Scikit-learn, Deep Learning, Computer Vision, Explainable AI",
+  },
+  {
+    category: "Geospatial Engineering",
+    skills:
+      "GDAL, Rasterio, GeoPandas, QGIS, PostgreSQL/PostGIS, Spatial Analysis",
+  },
+  {
+    category: "Cloud & Development",
+    skills:
+      "Python, SQL, AWS, Docker, Git, Linux, CI/CD",
+  },
+];
 ---
 
-<BaseLayout title="About">
-  <h1>About</h1>
-  <p>Content coming soon.</p>
+<BaseLayout
+  title="About"
+  description="About Saheel Ahmed — Geospatial Data Scientist and Engineer."
+>
+  <div class="about-page">
+
+    <!-- ABOUT INTRODUCTION -->
+
+    <header class="page-header">
+      <h1>About Me</h1>
+    </header>
+
+    <section class="about-intro">
+
+      <div class="about-photo">
+        <img
+          src="/images/saheel.jpg"
+          alt="Saheel Ahmed"
+          width="320"
+          height="400"
+          loading="eager"
+        />
+      </div>
+
+      <div class="about-content">
+
+        <p>
+          <strong>Hey, I'm Saheel! 👋</strong> I'm a Geospatial Data
+          Scientist and Engineer with nearly six years of professional
+          experience working at the intersection of Earth observation 🛰️,
+          geospatial engineering, and machine learning. I recently
+          graduated with an MSc in Geoinformation Science and Earth
+          Observation 🎓 from the ITC Faculty, University of Twente,
+          Netherlands 🇳🇱.
+        </p>
+
+        <p>
+          Before pursuing my master's, I worked at Blue Sky Analytics,
+          a climate-tech startup in India 🇮🇳, where I developed deep
+          learning models and scalable geospatial data pipelines for
+          applications spanning environmental monitoring 🌍, including
+          air quality and wildfire carbon emissions; renewable energy
+          monitoring, particularly solar parks ☀️; and carbon
+          sequestration mapping through above-ground biomass and
+          carbon stock estimation 🌳.
+        </p>
+
+        <p>
+          During my master's, I had the opportunity to explore
+          explainable AI for urban deprivation mapping, research that
+          earned second place 🏆 in the CLGE Young Surveyors' Contest
+          2026. I also worked on agricultural activity detection using
+          satellite imagery during my internship at NEO BV in the
+          Netherlands, supporting agricultural monitoring 🌾 in the
+          context of the EU Common Agricultural Policy (CAP).
+        </p>
+
+        <p>
+          Outside of individual projects, I enjoy exploring new
+          developments in Earth observation, open-source geospatial
+          technologies, and how they can be applied to real-world
+          problems.
+        </p>
+
+        <div class="about-links">
+          <a
+            href="https://github.com/saheelBreezo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/saheelahmed/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn ↗
+          </a>
+
+        <a href="mailto:saheelahmed2@gmail.com">
+          Email ↗
+        </a>
+
+
+          <!-- Enable when CV is available -->
+          <!--
+          <a href="/documents/Saheel_Ahmed_CV.pdf" target="_blank">
+            CV ↗
+          </a>
+          -->
+        </div>
+      </div>
+    </section>
+
+
+<!-- PROFESSIONAL EXPERIENCE -->
+
+<section class="about-section">
+  <h2>Experience</h2>
+
+  <div class="timeline">
+    {
+      experience.map((item) => (
+        <div class="timeline-item">
+
+          <div class="timeline-period">
+            {item.period}
+          </div>
+
+          <div class="timeline-content">
+
+            <h3>{item.company}</h3>
+
+            <p class="location">
+              {item.location}
+            </p>
+
+            <p class="experience-role-title">{item.roles[0].title}</p>
+
+            <div class="experience-description">
+              {
+                item.description.split("\n\n").map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))
+              }
+            </div>
+
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+
+    <!-- EDUCATION -->
+
+    <section class="about-section">
+
+      <h2>Education</h2>
+
+      <div class="timeline">
+
+        {
+          education.map((item) => (
+            <div class="timeline-item">
+
+              <div class="timeline-period">
+                {item.period}
+              </div>
+
+              <div class="timeline-content">
+
+                <h3>{item.institution}</h3>
+
+                <p class="degree">
+                  {item.degree}
+                </p>
+
+                <p class="location">
+                  {item.location}
+                </p>
+
+                {
+                  item.details && (
+                    <p class="description">
+                      {item.details}
+                    </p>
+                  )
+                }
+
+                {
+                  item.recognition && (
+                    <p class="recognition">
+                      {item.recognition}
+                    </p>
+                  )
+                }
+
+              </div>
+
+            </div>
+          ))
+        }
+
+      </div>
+
+    </section>
+
+
+    <!-- TECHNICAL EXPERTISE -->
+
+    <section class="about-section">
+
+      <h2>Technical Expertise</h2>
+
+      <div class="expertise-list">
+
+        {
+          expertise.map((item) => (
+            <div class="expertise-item">
+
+              <h3>{item.category}</h3>
+
+              <p>{item.skills}</p>
+
+            </div>
+          ))
+        }
+
+      </div>
+
+    </section>
+
+  </div>
 </BaseLayout>
+
+<style>
+  .about-page {
+    max-width: 900px;
+    padding: 3.5rem 0 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+  }
+
+  /* Biography */
+  .about-intro {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 2.25rem;
+    align-items: start;
+    margin-bottom: 3.5rem;
+  }
+
+  .about-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .about-content {
+    min-width: 0;
+  }
+
+  .about-content p {
+    margin: 0 0 1.2rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .about-content strong {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .about-links a {
+    color: var(--foreground);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .about-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* Experience, education and expertise */
+  .about-section {
+    margin-bottom: 3rem;
+  }
+
+  .about-section > h2 {
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 2rem;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 155px minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 0.75rem 0 1.25rem;
+  }
+
+  .timeline-period {
+    padding-top: 0.3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .timeline-content {
+    min-width: 0;
+  }
+
+  .timeline-content h3 {
+    margin: 0 0 0.2rem;
+    font-size: 1.5rem;
+  }
+
+  .location {
+    margin: 0 0 0.75rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .experience-role-title {
+    margin: 0 0 0.85rem;
+    color: var(--foreground);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .experience-description {
+    width: 100%;
+    max-width: none;
+  }
+
+  .experience-description p {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .experience-description p:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-content .description {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .degree {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .recognition {
+    margin-top: 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .expertise-item {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .expertise-item:last-child {
+    border-bottom: none;
+  }
+
+  .expertise-item h3 {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .expertise-item p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .about-page {
+      padding: 2.75rem 0 3.5rem;
+    }
+
+    .about-intro {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .about-photo img {
+      max-width: 260px;
+    }
+
+    .timeline-item {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .timeline-period {
+      padding-top: 0;
+    }
+
+    .about-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .expertise-item {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+  }
+
+</style>

@@ -9,130 +9,170 @@ const { project } = Astro.props;
 ---
 
 <article class="project-card">
-  <a
-    href={`/projects/${project.slug}/`}
-    class="project-link"
-    aria-label={`View project: ${project.title}`}
-  >
-    <div class="project-image">
+
+  {
+    project.image && (
+      <div class="project-image">
+        <img
+          src={project.image}
+          alt={project.imageAlt || project.title}
+          loading="lazy"
+          style={{ objectFit: project.imageFit || "cover" }}
+        />
+      </div>
+    )
+  }
+
+  <div class="project-content">
+
+    <p class="category">{project.category}</p>
+
+    <h2>{project.title}</h2>
+
+    <div class="metadata">
+      {project.organization && <span>{project.organization}</span>}
+      {project.year && <span>{project.year}</span>}
+    </div>
+
+    <p class="description">
+      {project.description}
+    </p>
+
+    {
+      project.recognition && (
+        <p class="recognition">
+          {project.recognition}
+        </p>
+      )
+    }
+
+    <div class="technologies">
       {
-        project.image ? (
-          <img
-            src={project.image}
-            alt=""
-            loading="lazy"
-          />
-        ) : (
-          <div class="image-placeholder" aria-hidden="true">
-            <span>{project.category}</span>
-          </div>
-        )
+        project.technologies.map((technology) => (
+          <span class="tag">{technology}</span>
+        ))
       }
     </div>
 
-    <div class="project-content">
-      <h3>{project.title}</h3>
+    {
+      (project.github ||
+        project.projectUrl ||
+        project.presentationUrl) && (
+        <div class="project-links">
 
-      <p class="description">
-        {project.description}
-      </p>
+          {
+            project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub ↗
+              </a>
+            )
+          }
 
-      <div class="tags">
-        {
-          project.technologies.map((technology) => (
-            <span class="tag">{technology}</span>
-          ))
-        }
-      </div>
+          {
+            project.projectUrl && (
+              <a
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Project ↗
+              </a>
+            )
+          }
 
-      <span class="view-project">
-        View Project →
-      </span>
-    </div>
-  </a>
+          {
+            project.presentationUrl && (
+              <a
+                href={project.presentationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Presentation ↗
+              </a>
+            )
+          }
+
+        </div>
+      )
+    }
+
+  </div>
 </article>
 
 <style>
   .project-card {
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--background);
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-  }
-
-  .project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgb(0 0 0 / 5%);
-  }
-
-  .project-link {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .project-link:hover {
-    text-decoration: none;
-  }
-
-  .project-link:focus-visible {
-    outline: 3px solid currentColor;
-    outline-offset: -3px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
   }
 
   .project-image {
     aspect-ratio: 16 / 9;
-    background: #eef1f2;
+    background: #f3f4f5;
   }
 
   .project-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
-  }
-
-  .image-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 1rem;
-    color: #71818a;
-    font-size: 0.85rem;
-    text-align: center;
   }
 
   .project-content {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 1.5rem;
+    padding: 1.6rem;
   }
 
-  h3 {
+  .category {
     margin: 0 0 0.75rem;
-    font-size: 1.55rem;
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h2 {
+    margin: 0 0 0.8rem;
+    font-size: 1.65rem;
     line-height: 1.3;
   }
 
-  .description {
-    margin: 0;
+  .metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin-bottom: 1.2rem;
     color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.75;
+    font-size: 0.8rem;
   }
 
-  .tags {
+  .description {
+    margin: 0 0 1.2rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .recognition {
+    margin: 0 0 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .technologies {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 1.5rem;
+    margin-top: auto;
   }
 
   .tag {
@@ -142,11 +182,19 @@ const { project } = Astro.props;
     font-size: 0.7rem;
   }
 
-  .view-project {
-    display: inline-block;
-    margin-top: auto;
-    padding-top: 1.75rem;
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .project-links a {
     font-size: 0.85rem;
     font-weight: 600;
+  }
+
+  .project-links a:hover {
+    text-decoration: underline;
   }
 </style>

@@ -1,0 +1,178 @@
+---
+import type { Talk } from "../data/talks";
+
+interface Props {
+  talk: Talk;
+}
+
+const { talk } = Astro.props;
+---
+
+<article class="talk-entry">
+
+  <div class="talk-year">
+    {talk.year}
+  </div>
+
+  <div class="talk-content">
+
+    <h2>{talk.title}</h2>
+
+    <p class="event">
+      {talk.event}
+    </p>
+
+    {
+      (talk.date || talk.location) && (
+        <div class="details">
+          {talk.date && <span>{talk.date}</span>}
+          {talk.date && talk.location && (
+            <span aria-hidden="true">·</span>
+          )}
+          {talk.location && <span>{talk.location}</span>}
+        </div>
+      )
+    }
+
+    {
+      talk.description && (
+        <p class="description">
+          {talk.description}
+        </p>
+      )
+    }
+
+    {
+      talk.recognition && (
+        <p class="recognition">
+          {talk.recognition}
+        </p>
+      )
+    }
+
+    {
+      (talk.videoUrl || talk.slidesUrl || talk.eventUrl) && (
+        <div class="talk-links">
+
+          {
+            talk.videoUrl && (
+              <a
+                href={talk.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch Recording ↗
+              </a>
+            )
+          }
+
+          {
+            talk.slidesUrl && (
+              <a
+                href={talk.slidesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Slides / Resources ↗
+              </a>
+            )
+          }
+
+          {
+            talk.eventUrl && (
+              <a
+                href={talk.eventUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Event ↗
+              </a>
+            )
+          }
+
+        </div>
+      )
+    }
+
+  </div>
+
+</article>
+
+<style>
+  .talk-entry {
+    display: grid;
+    grid-template-columns: 85px minmax(0, 1fr);
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .talk-year {
+    padding-top: 0.4rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.6rem;
+    line-height: 1.35;
+  }
+
+  .event {
+    margin: 0 0 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .description {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .recognition {
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .talk-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.2rem;
+  }
+
+  .talk-links a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .talk-links a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .talk-entry {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: 2rem 0;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+</style>
