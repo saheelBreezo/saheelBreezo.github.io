@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+import {
+  projects,
+  projectCategories,
+} from "../../data/projects";
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected projects in Earth observation, GeoAI, remote sensing, and geospatial engineering."
+>
+  <div class="projects-page">
+
+    <header class="page-header">
+      <p class="eyebrow">PORTFOLIO</p>
+
+      <h1>Selected Projects</h1>
+
+      <p class="page-description">
+        A collection of research and engineering projects
+        exploring Earth observation, geospatial machine learning,
+        and scalable geospatial systems.
+      </p>
+    </header>
+
+    {
+      projectCategories.map((category) => {
+        const categoryProjects = projects.filter(
+          (project) => project.category === category
+        );
+
+        return (
+          <section class="project-section">
+            <h2>{category}</h2>
+
+            <div class="project-grid">
+              {
+                categoryProjects.map((project) => (
+                  <ProjectCard project={project} />
+                ))
+              }
+            </div>
+          </section>
+        );
+      })
+    }
+
+  </div>
+</BaseLayout>
+
+<style>
+  .projects-page {
+    padding: 5rem 0;
+  }
+
+  .page-header {
+    max-width: 750px;
+    margin-bottom: 6rem;
+  }
+
+  .eyebrow {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  h1 {
+    margin: 1rem 0 1.5rem;
+    font-size: clamp(3rem, 5vw, 4rem);
+  }
+
+  .page-description {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .project-section {
+    margin-bottom: 6rem;
+  }
+
+  .project-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-page {
+      padding: 3rem 0;
+    }
+
+    .page-header {
+      margin-bottom: 4rem;
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-section {
+      margin-bottom: 4rem;
+    }
+  }
+</style>
